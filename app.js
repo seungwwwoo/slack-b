@@ -4,7 +4,10 @@ const { App, LogLevel } = require('@slack/bolt');
 
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DB_URI);
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite',
+});
 
 const { registerListeners } = require('./listeners');
 
